@@ -11,12 +11,17 @@ namespace KiralynokWPF
 {
     public partial class GraphSurface 
     {
-        public GraphSurface(StackPanel cont)
-        {
-            Label[,] lb = new Label[8, 8];
-            StackPanel[] sp = new StackPanel[8];
+        public Label[,] Lb;
 
-            for (int i = 0; i < 8; i++)
+       
+        
+        public GraphSurface(StackPanel cont, int r, int c)
+        {
+            Label[,] lb = new Label[r, c];
+            Lb = lb;
+            StackPanel[] sp = new StackPanel[r];
+
+            for (int i = 0; i < r; i++)
             {
                 sp[i] = new StackPanel
                 {
@@ -32,10 +37,10 @@ namespace KiralynokWPF
                 cont.Children.Add(sp[i]);
             }
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < r; i++)
             {
 
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < c; j++)
                 {
 
                     lb[i, j] = new Label
@@ -45,14 +50,16 @@ namespace KiralynokWPF
                         FontSize = 20,
                         //Height = 50,
                         Width = 48,
-                        Background = new SolidColorBrush(Colors.Aqua),
+                        Background = new SolidColorBrush(Colors.BlanchedAlmond),
                         BorderBrush = new SolidColorBrush(Colors.Black),
-                        Content = "#"
+                        Content = "#",
+                        BorderThickness = new Thickness(.5,.5,.5,.5)
 
                     };
                     sp[i].Children.Add(lb[i, j]);
                 }
             }
+
         }
 
     }
